@@ -1,0 +1,85 @@
+/*
+    COMPONENTS.BUTTON
+    ----
+
+==================================================== */
+
+/* buttons config */
+$button-base-h: $g-spacing-unit*10;
+$button-small-h: $g-spacing-unit*4;
+$button-margin: $g-spacing-unit*2;
+
+/*
+  BUTTON.BASE
+*/
+
+@mixin buttonBase{
+  @include resetAppearance(); //reset default browser btn appearance
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  white-space: nowrap;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+  will-change: background, color, border;
+  cursor: pointer;
+}
+
+@mixin buttonSkeleton{
+  height: $button-base-h;
+  width: auto;
+  padding: $g-spacing-unit/2 $g-spacing-unit*2;
+  border-radius: $g-roundness;
+  color: inherit;
+  font-family: $g-text-font-family;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  @include mappy-bp(xs){
+    padding: $g-spacing-unit/2 $g-spacing-unit*3;
+  }
+}
+
+.c-button{
+  @include buttonBase;
+  @include buttonSkeleton;
+  & label{
+    padding: $g-spacing-unit/2 $g-spacing-unit*3;
+  }
+  color: getAppColor('text','clear');
+  background: getAppColor('background','base');
+
+  &:hover, &:active{
+    background: getAppColor('background', 'dark');
+  }
+  &.disabled{
+    background: getAppColor('greyscale', 'light-grey');
+    color: getAppColor('greyscale', 'base');
+    pointer-events: none;
+  }
+}
+
+.c-button + .c-button{
+  margin-left: $g-spacing-unit;
+}
+
+.c-button__icon,
+.c-button__text{
+  vertical-align: middle;
+  font-size: 1.5rem;
+}
+
+.c-button__icon{
+  &:first-child{
+    margin-right: $g-spacing-unit/2;
+  }
+  &:last-child{
+    margin-left: $g-spacing-unit/2;
+  }
+  label &{
+    vertical-align: sub;
+  }
+}
+
+.c-button-grid {
+  margin: $button-margin 0;
+}

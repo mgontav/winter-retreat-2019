@@ -19,7 +19,7 @@
 class Person < ApplicationRecord
   belongs_to :team, optional: true
 
-  def set_team
+  def confirm_team
     return if team_id.present?
 
     base_counts = team_counts

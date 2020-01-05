@@ -1,2 +1,9 @@
-<h1>Assign#index</h1>
-<p>Find me in app/views/assign/index.html.erb</p>
+<div class="o-container">
+  <div class="o-grid">
+    <% @people.each do |person| %>
+      <div class="o-grid__el u-size-12/12 u-size-12/12@xs u-size-6/12@md u-size-3/12@xl">
+        <button class="c-button c-button-grid"><%= link_to person.name, assign_path(person.id), class: 'c-button__text' %></button>
+      </div>
+    <% end %>
+  </div>
+</div>

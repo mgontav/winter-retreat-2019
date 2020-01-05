@@ -6,8 +6,8 @@
     <div class="c-navbar__link-area <%= 'active' if current_page?(scores_path) %>">
       <%= link_to 'Scores', scores_path, class: 'c-navbar__link' %>
     </div>
-    <div class="c-navbar__link-area <%= 'active' if current_page?(assign_path) %>">
-      <%= link_to 'Assign', assign_path, class: 'c-navbar__link' %>
+    <div class="c-navbar__link-area <%= 'active' if controller_name == 'assign' %>">
+      <%= link_to 'Assign', assigns_path, class: 'c-navbar__link' %>
     </div>
   </div>
 </div>
