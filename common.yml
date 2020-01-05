@@ -1,0 +1,13 @@
+version: '2.3'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/code
+      - gems:/usr/local/bundle
+    environment:
+      - HOST_NAME=http://localhost:3000
+      - DATABASE_HOST=db

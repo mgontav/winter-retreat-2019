@@ -1,0 +1,29 @@
+AllCops:
+  Exclude:
+    - 'bin/**/*'
+    - 'vendor/**/*'
+    - 'spec/**/*'
+    - 'tmp/**/*'
+    - 'db/**/*'
+    - 'node_modules/**/*'
+    - 'Rakefile'
+
+Style/Documentation:
+  Exclude:
+    - 'spec/**/*'
+    - 'test/**/*'
+    - 'app/helpers/application_helper.rb'
+    - 'app/jobs/application_job.rb'
+    - 'app/mailers/application_mailer.rb'
+    - 'app/models/application_record.rb'
+    - 'config/application.rb'
+    - 'app/graphql/**/*'
+
+Style/MixinUsage:
+  Exclude:
+    - 'bin/setup'
+    - 'bin/update'
+
+Metrics/LineLength:
+  Exclude:
+    - 'config/**/*'
