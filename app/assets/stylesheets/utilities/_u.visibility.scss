@@ -1,0 +1,28 @@
+/*
+    UTILITIES.VISIBILITY
+    ----
+
+==================================================== */
+$u-visibility-breakpoints-list: $grid-breakpoints;
+
+.u-hidden { display: none; }
+
+@each $breakpoint in $u-visibility-breakpoints-list {
+  @include mappy-bp($breakpoint){
+    .u-hidden\@#{$breakpoint} { display: none; }
+  }
+}
+
+[hidden] {
+  display: none;
+}
+
+@each $breakpoint in $u-visibility-breakpoints-list {
+  @include mappy-bp($breakpoint){
+    .u-visible\@#{$breakpoint} { display: initial; }
+  }
+}
+
+.u-overflow-hidden{
+	overflow: hidden;
+}

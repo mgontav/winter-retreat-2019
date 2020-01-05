@@ -10,6 +10,7 @@ gem 'bootsnap', '~> 1.4.5', require: false
 gem 'pg', '~> 1.1.4'
 gem 'puma', '~> 4.2.1'
 gem 'rails', '~> 6.0.0'
+gem 'sassc-rails', '~> 2.1', '>= 2.1.2'
 gem 'sprockets', '~> 3.7.2'
 
 group :development, :test do

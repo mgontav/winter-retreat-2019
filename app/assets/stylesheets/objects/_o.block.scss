@@ -1,0 +1,19 @@
+/*
+    OBJECTS.BLOCK
+    ----
+==================================================== */
+
+.o-block{
+  width: 100%;
+  margin-bottom: $g-spacing-unit*4;
+}
+
+
+.o-block--solid{
+  width: 100%;
+  margin-bottom: $g-spacing-unit*4;
+  border-radius: $g-roundness;
+  border: 1px solid  getAppColor('greyscale', 'light-grey');
+  background: getAppColor('background', 'light');
+  box-shadow: $shadow-out-br;
+}

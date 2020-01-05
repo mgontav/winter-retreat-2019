@@ -1,0 +1,45 @@
+/*
+    BASE.FONTS
+    ----
+
+* ==================================================== */
+/* Use mixin to include desired font, one mixin per weight/style pair */
+//@include font-face($font-family: 'FontNAME', $file-path: 'fontPath', $font-weight: '500', $font-style: 'normal', $RoR: false);
+
+body{
+  font: normal 1rem/1.5 "Lucida Console", Monaco, sans-serif;
+  color: getAppColor('text','base');
+  letter-spacing: -0.01px;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 400;
+}
+
+h1, h2, h3, h4, h5, h6, a {
+  font-family: "Lucida Console", Monaco, sans-serif;
+}
+
+p {
+  font-family: "Courier New", Courier, monospace;
+}
+
+h1{
+  @include font-size(22px);
+  @include mappy-bp(xs){
+    @include font-size(24px);
+  }
+}
+
+h2{
+  @include font-size(19px);
+  @include mappy-bp(xs){
+    @include font-size(20px);
+  }
+}
+
+h3{
+  @include font-size(17px);
+  @include mappy-bp(xs){
+    @include font-size(18px);
+  }
+}

@@ -1,0 +1,53 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_self
+ */
+
+//VENDOR
+@import "normalize";
+
+
+//SETTINGS
+@import "settings/s.foundations";
+@import "settings/s.colors";
+@import "settings/s.iconset";
+
+
+// Functions & Mixins
+@import "tools/t.mxn-breakpoints";
+@import "tools/t.mxn-typography";
+@import "tools/t.fx-global";
+@import "tools/t.fx-iconset";
+@import "tools/t.effects";
+
+//BASE
+@import "base/b.reset";
+@import "base/b.box-sizing";
+@import "base/b.page";
+@import "base/b.typography";
+
+//OBJECTS
+@import "objects/o.skeleton";
+@import "objects/o.container";
+@import "objects/o.block";
+@import "objects/o.grid";
+
+//COMPONENTS
+@import "components/c.navbar";
+
+//UTILITIES
+@import "utilities/u.flex-layout";
+@import "utilities/u.sizing";
+@import "utilities/u.visibility";
+@import "utilities/u.coloring";
+@import "utilities/u.helpers";

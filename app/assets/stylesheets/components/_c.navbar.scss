@@ -1,0 +1,68 @@
+/*
+    navbar.BUTTON
+    ----
+
+==================================================== */
+
+.c-navbar{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: $g-navbar-height;
+  z-index: 100;
+  padding: 0px;
+  background: getAppColor('background', 'light');
+  box-shadow: $shadow-out-tr;
+  @include mappy-bp(xs){
+    height: $g-navbar-height-sm;
+    justify-content: space-between;
+    padding: 0px $g-spacing-unit*4;
+    box-shadow: $shadow-out-br;
+  }
+}
+
+.c-navbar__navigation{
+  height: $g-navbar-height;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  @include mappy-bp(xs){
+    height: $g-navbar-height-sm;
+    width: auto;
+  }
+}
+
+
+.c-navbar__link-area{
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  border-top: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  text-align: center;
+  &.active{
+    border-bottom: 3px solid getAppColor('text', 'base');
+  }
+  @include mappy-bp(xs){
+    width: auto;
+  }
+}
+
+.c-navbar__link{
+  margin: 0px auto;
+  @include font-size(14px);
+  color:  getAppColor('text', 'secondary');
+  &:hover{
+    color:  getAppColor('text', 'base');
+  }
+  .active &{
+    color:  getAppColor('text', 'base');
+  }
+  @include mappy-bp(xs){
+    @include font-size(20px);
+    margin: 0px $g-spacing-unit*2;
+  }
+}

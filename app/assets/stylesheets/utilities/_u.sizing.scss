@@ -1,0 +1,103 @@
+/*
+    UTILITES.SIZING
+    ----
+
+   By default responsive breakpoints are based on the grid/layout breakpoints
+* ========================================================================== */
+
+
+$u-width-class-steps: 10;
+$u-size-breakpoints-list: $grid-breakpoints;
+
+/*
+   Grid based utility classes
+   ---
+
+   Sizing usage:
+      <div class="u-6/12@lg u-8/12@sm u-7/12@lg"></div>
+
+   Offeset usage:
+      <div class="u-6/12 u-push-2/12@sm"></div>
+ * ========================================================================== */
+@for $i from 1 through $grid-columns {
+  $widthCalc:  100% * $i / $grid-columns;
+
+  .u-size-#{$i}\/#{$grid-columns}{
+    width: $widthCalc;
+  }
+
+  // [EXP], if parent has --flex suffix or item has it when parent class not descriptive enough
+  [data-flex-layout] > .u-size-#{$i}\/#{$grid-columns},
+  [data-flex-layout__item].u-size-#{$i}\/#{$grid-columns},
+  .u-size-#{$i}\/#{$grid-columns}-flexi {
+    flex-basis: $widthCalc;
+    max-width:  $widthCalc;
+  }
+
+  .u-offset-#{$i}\/#{$grid-columns},
+  .u-push-#{$i}\/#{$grid-columns}{
+    margin-left: $widthCalc;
+  }
+}
+
+//responsive grid
+@each $breakpoint in $u-size-breakpoints-list{
+  @include mappy-bp($breakpoint){
+    @for $i from 1 through $grid-columns {
+      $widthCalc:  100% * $i / $grid-columns;
+
+      .u-size-#{$i}\/#{$grid-columns}\@#{$breakpoint} {
+        width: $widthCalc;
+      }
+
+      [data-flex-layout] > .u-size-#{$i}\/#{$grid-columns}\@#{$breakpoint},
+      [data-flex-layout__item].u-size-#{$i}\/#{$grid-columns}\@#{$breakpoint},
+      .u-size-#{$i}\/#{$grid-columns}\@#{$breakpoint}-flexi {
+        flex-basis: $widthCalc;
+        max-width:  $widthCalc;
+      }
+
+      .u-offset-#{$i}\/#{$grid-columns}\@#{$breakpoint},
+      .u-push-#{$i}\/#{$grid-columns}\@#{$breakpoint} {
+        margin-left: $widthCalc;
+      }
+    }
+  }
+}
+
+/*
+   Percentage utility classes
+   ---
+
+
+   todo: add flex sizing?
+   Sizing usage:
+      <div class="u-20%"></div>
+
+ * ========================================================================== */
+
+@for $i from 1 through $u-width-class-steps {
+  $widthCalc:  100% * $i / $u-width-class-steps;
+  
+  .u-size-#{strip-unit($widthCalc)}\% {
+    width: $widthCalc;
+  }
+}
+
+@each $breakpoint in $u-size-breakpoints-list{
+  @include mappy-bp($breakpoint){
+    @for $i from 1 through $u-width-class-steps {
+      $widthCalc:  100% * $i / $u-width-class-steps;
+
+      .u—size-#{strip-unit($widthCalc)}\%\@#{$breakpoint} {
+        width: $widthCalc;
+      }
+    }
+  }
+}
+
+@each $breakpoint in $s-flex-layout-breakpoints-list{
+  @include mappy-bp($breakpoint){
+    [class*="u-size-auto\@#{$breakpoint}"]{ width: auto;}
+  }
+}

@@ -1,0 +1,42 @@
+/*
+   OJECTS.SKELETON
+   ----
+* ========================================================================== */
+
+.o-skeleton {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.o-skeleton__head,
+.o-skeleton__feet {
+  flex: none;
+}
+
+.o-skeleton__head {
+  position: fixed;
+  bottom:0px;
+  left:0px;
+  z-index: 1000;
+  width:100%;
+  height: $g-navbar-height;
+  @include mappy-bp(xs){
+    top:0px;
+    bottom: auto;
+    height: $g-navbar-height-sm;
+  }
+}
+
+.o-skeleton__body,
+.o-skeleton__main {
+  position: relative;
+  flex: 1 0 auto;
+  width: 100%;
+  padding: $g-navbar-height/2 0px $g-navbar-height;
+  @include mappy-bp(xs){
+    padding: $g-navbar-height-sm*2 0px 0px;
+  }
+}

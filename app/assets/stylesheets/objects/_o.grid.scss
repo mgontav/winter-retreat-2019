@@ -1,0 +1,55 @@
+/*
+    OBJECTS.GRID
+    ----
+
+
+    an float free, inline-block grid,
+    with an optional flexbox flavour.
+
+    usage:
+    <div class="o-grid">
+    <div class="o-grid__row">
+      <div class="o-grid__item"></div>
+    </div>
+  </div>
+
+  requires:
+      - unless on flexbox mode o.layout items must be complemented
+      width a size utility class ortherwise they will be stacked
+      and 100% of the parent
+
+* ==================================================== */
+$grid-columns: 12;
+$grid-gutter: $g-baseline/2;
+$grid-breakpoints: ('xs', 'sm', 'sml', 'md', 'mdl', 'lg', 'xl');
+
+.o-grid,
+.o-grid__row,
+.o-grid__item,
+.o-layout,
+.o-layout__item {
+  box-sizing: border-box;
+}
+
+.o-grid,
+.o-layout {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  width: auto;
+  margin-left: -$grid-gutter;
+  margin-right: -$grid-gutter;
+  //remove if using html comments to remove inline-block whitespace
+  font-size: 0px;
+}
+
+/* GRID ITEMS */
+.o-grid__el,
+ .o-layout__el {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  width: 100%;
+  padding: $grid-gutter/2 $grid-gutter;
+  font-size: 1rem;
+}

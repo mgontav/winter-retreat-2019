@@ -1,8 +1,44 @@
-# frozen_string_literal: true
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+team1 = Team.create!(
+  name: 'Gorgonstone',
+  creature: 'Gorgon'
+)
+
+team2 = Team.create!(
+  name: 'Dragonnest',
+  creature: 'Dragon'
+)
+
+team3 = Team.create!(
+  name: 'Phoenixeye',
+  creature: 'Phoenix'
+)
+
+team4 = Team.create!(
+  name: 'Krakenids',
+  creature: 'Kraken'
+)
+
+person1 = Person.create!(name: 'Alexandra Grancho')
+person2 = Person.create!(name: 'Beatriz Beato')
+person3 = Person.create!(name: 'Daniel Lopes')
+person4 = Person.create!(name: 'Diogo Laginha')
+person5 = Person.create!(name: 'Diogo Lucas')
+person6 = Person.create!(name: 'Gonçalo Louzada')
+person7 = Person.create!(name: 'João Barbosa')
+person8 = Person.create!(name: 'João Marques', team_id: team2.id)
+person9 = Person.create!(name: 'João Nogueira')
+person10 = Person.create!(name: 'Luís Antunes')
+person11 = Person.create!(name: 'Maria João Ferreira')
+person12 = Person.create!(name: 'Mariana Cerveira')
+person13 = Person.create!(name: 'Matt Drew')
+person14 = Person.create!(name: 'Marta Pais')
+person15 = Person.create!(name: 'Miguel Tavares', team_id: team1.id)
+person16 = Person.create!(name: 'Nuno Lopes')
+person17 = Person.create!(name: 'Pedro Janeiro', team_id: team3.id)
+person18 = Person.create!(name: 'Rafael Jegundo')
+person19 = Person.create!(name: 'Renato Leão')
+person20 = Person.create!(name: 'Ricardo Pereira')
+person21 = Person.create!(name: 'Rui Magalhães')
+person22 = Person.create!(name: 'Samuel Moreira')
+person23 = Person.create!(name: 'Tomás Marques', team_id: team4.id)
+

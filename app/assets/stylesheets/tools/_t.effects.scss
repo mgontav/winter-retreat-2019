@@ -1,0 +1,42 @@
+/*
+    TOOLS.EFECTS
+    ----
+
+* ==================================================== */
+
+
+.t-appear-in{
+	animation-name: appear-in;
+	animation-duration: 2s;
+	animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+}
+
+@keyframes appear-in {
+	0%   {opacity: 0;}
+	100% {opacity: 1;}
+}
+
+.t-roll-down{
+  animation-name: roll-down;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+}
+
+@keyframes roll-down {
+  0%   {opacity: 0; margin-top: -100px}
+  100% {opacity: 1; margin-top: 0px}
+}
+
+.t-slide-up-appear{
+  animation-name: slide-up , appear-in;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+}
+
+@keyframes slide-up {
+  0%   { top:100%;}
+  100% { top:0px;}
+}

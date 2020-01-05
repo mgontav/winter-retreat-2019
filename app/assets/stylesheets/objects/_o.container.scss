@@ -1,0 +1,55 @@
+/*
+    OBJECTS.CONTAINER
+    ----
+==================================================== */
+
+$container-sizes:(
+  xxs: 480px,
+  xs: 600px,
+  sm: 720px,
+  sml: 800px,
+  md: 880px,
+  mdl: 960px,
+  lg: 1080px,
+  xl: 1280px,
+  xxl: 1440px
+);
+
+
+.o-container {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: {
+    left: $g-baseline / 2;
+    right: $g-baseline / 2;
+  }
+  margin:  0 auto;
+  padding-bottom: $g-spacing-unit*4;
+  @each $breakpoint, $size in $container-sizes{
+    @include mappy-bp($breakpoint){
+      max-width: $size;
+    }
+  }
+
+  &--flush {
+    padding: {
+      left: 0;
+      right: 0;
+    }
+  }
+}
+.o-container--expand-h {
+  height: 100%;
+  padding-bottom: 0px;
+}
+
+.o-container--full {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  min-height: 100vh;
+}
+
