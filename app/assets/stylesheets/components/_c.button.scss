@@ -83,3 +83,19 @@ $button-margin: $g-spacing-unit*2;
 .c-button-grid {
   margin: $button-margin 0;
 }
+
+.c-button__link {
+  vertical-align: middle;
+  font-size: 1.5rem;
+  width: 100%;
+}
+
+.c-button__link + .c-button__link {
+  margin-left: $g-spacing-unit;
+}
+
+.c-button__link > .c-button {
+  height: 100%;
+  width: 100%;
+  text-align: left;
+}
