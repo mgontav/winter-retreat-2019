@@ -1,0 +1,14 @@
+<div class="c-team">
+  <section class="c-team__header">
+    <h3 class="c-team__title">
+      <%= team.name %>
+    </h3>
+  </section>
+  <section class="c-team__body">
+    <% team.people.each do |person| %>
+      <p class="c-team__info">
+        <span class="c-team__member"><%= person.name %></span>
+      </p>
+    <% end %>
+  </section>
+</div>
