@@ -3,6 +3,8 @@
 ActiveAdmin.register Person do
   actions :index, :show, :edit, :update
 
+  config.sort_order = 'name_asc'
+
   permit_params :name, :team_id
 
   index do

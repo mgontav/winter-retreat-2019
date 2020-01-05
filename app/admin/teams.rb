@@ -3,6 +3,8 @@
 ActiveAdmin.register Team do
   actions :index, :show, :edit, :update
 
+  config.sort_order = 'id_asc'
+
   permit_params :name, :score, :creature, :founder,
                 :score, :color1, :color2, values: []
 
