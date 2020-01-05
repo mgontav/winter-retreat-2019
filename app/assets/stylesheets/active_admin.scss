@@ -10,8 +10,62 @@
 // Active Admin's got SASS!
 @import "active_admin/mixins";
 @import "active_admin/base";
+@import "font-awesome";
+
 
 // Overriding any non-variable SASS must be done after the fact.
 // For example, to change the default status-tag color:
 //
 //   .status_tag { background: #6090DB; }
+
+.active_admin_image {
+  max-height: 400px;
+  max-width: 400px;
+}
+
+.input-group--array {
+  display: inline-block;
+  width: calc(80% - 22px);
+  .input-group--array__item {
+    width: 100%;
+    input[type=text] {
+      width: calc(100% - 50px);
+    }
+  }
+}
+
+.array-action--add,
+.array-action--remove {
+  background: none;
+  border-radius: 0;
+  border: 0;
+  box-shadow: none;
+  line-height: 1;
+  padding: 0;
+  text-shadow: none;
+  vertical-align: middle;
+  font-size: rem(15);
+}
+
+.array-action--add:not(.disabled):hover,
+.array-action--add:not(.disabled):active,
+.array-action--add:not(.disabled):focus,
+.array-action--remove:not(.disabled):hover,
+.array-action--remove:not(.disabled):active,
+.array-action--remove:not(.disabled):focus {
+  background: none;
+  border: 0;
+  box-shadow: none;
+}
+
+.array-action--add {
+  color: #3c763d;
+}
+
+.array-action--remove {
+  color: #a94442;
+}
+
+.array-action--remove.can-undo {
+  color: #3c763d;
+}

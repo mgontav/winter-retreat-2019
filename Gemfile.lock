@@ -81,6 +81,13 @@ GEM
       msgpack (~> 1.0)
     builder (3.2.4)
     byebug (11.0.1)
+    coffee-rails (5.0.0)
+      coffee-script (>= 2.2.0)
+      railties (>= 5.2.0)
+    coffee-script (2.4.1)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.12.2)
     concurrent-ruby (1.1.5)
     crass (1.0.5)
     devise (4.7.1)
@@ -92,6 +99,8 @@ GEM
     erubi (1.9.0)
     execjs (2.7.0)
     ffi (1.11.3)
+    font-awesome-rails (4.7.0.5)
+      railties (>= 3.2, < 6.1)
     formtastic (3.1.5)
       actionpack (>= 3.2.13)
     formtastic_i18n (0.6.0)
@@ -265,7 +274,9 @@ DEPENDENCIES
   autoprefixer-rails (~> 7.1, >= 7.1.6)
   bootsnap (~> 1.4.5)
   byebug
+  coffee-rails (~> 5.0)
   devise (~> 4.7, >= 4.7.1)
+  font-awesome-rails (~> 4.7, >= 4.7.0.5)
   i18n-tasks (~> 0.9.28)
   listen (~> 3.2.0)
   pg (~> 1.1.4)

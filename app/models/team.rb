@@ -25,4 +25,12 @@ class Team < ApplicationRecord
   has_many :people, dependent: :destroy
 
   has_one_attached :avatar
+
+  before_update :clean_empty_values
+
+  private
+
+  def clean_empty_values
+    values.reject!(&:blank?)
+  end
 end

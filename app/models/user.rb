@@ -20,7 +20,6 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 
-
 # Application user
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
