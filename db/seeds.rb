@@ -2,21 +2,25 @@ team1 = Team.create!(
   name: 'Gorgonstone',
   creature: 'Gorgon'
 )
+team1.avatar.attach(io: File.open(Rails.root.join('app','assets','images','gorgonstone.jpg')), filename: 'avatar.jpg')
 
 team2 = Team.create!(
   name: 'Dragonnest',
   creature: 'Dragon'
 )
+team2.avatar.attach(io: File.open(Rails.root.join('app','assets','images','dragonnest.jpg')), filename: 'avatar.jpg')
 
 team3 = Team.create!(
   name: 'Phoenixeye',
   creature: 'Phoenix'
 )
+team3.avatar.attach(io: File.open(Rails.root.join('app','assets','images','phoenixeye.jpg')), filename: 'avatar.jpg')
 
 team4 = Team.create!(
   name: 'Krakenids',
   creature: 'Kraken'
 )
+team4.avatar.attach(io: File.open(Rails.root.join('app','assets','images','krakenids.jpg')), filename: 'avatar.jpg')
 
 person1 = Person.create!(name: 'Alexandra Grancho')
 person2 = Person.create!(name: 'Beatriz Beato')

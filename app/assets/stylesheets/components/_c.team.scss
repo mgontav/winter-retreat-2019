@@ -6,6 +6,7 @@
 
 $team-width: $g-spacing-unit*45;
 $team-header-size: $g-spacing-unit*16;
+$team-image-size: $g-spacing-unit*40;
 
 $team-roundness: $g-roundness*6;
 $team-shadow-g: 0 0 10px rgba(#787878, 0.3);
@@ -34,7 +35,10 @@ $team-secondary-color: rgba(getAppColor('text', 'base'),1);
   position: relative;
   padding: $g-spacing-unit*3 $g-spacing-unit*4;
   border-bottom: 1px dashed $team-secondary-color;
-  height: $team-header-size;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .c-team__title {
@@ -42,6 +46,14 @@ $team-secondary-color: rgba(getAppColor('text', 'base'),1);
   margin-bottom: $g-spacing-unit;
   text-align: center;
   font-size: 1.5rem;
+}
+
+.c-team__image {
+  height: $team-image-size;
+  width: $team-image-size;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .c-team__body {

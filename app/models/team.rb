@@ -23,4 +23,6 @@
 # A team, like a house of Gryffindor
 class Team < ApplicationRecord
   has_many :people, dependent: :destroy
+
+  has_one_attached :avatar
 end

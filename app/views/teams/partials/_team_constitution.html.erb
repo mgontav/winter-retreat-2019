@@ -3,6 +3,9 @@
     <h3 class="c-team__title">
       <%= team.name %>
     </h3>
+    <% if team.avatar.attached? %>
+      <div class="c-team__image" style="background-image: url(<%= url_for(team.avatar) %>);"></div>
+    <% end %>
   </section>
   <section class="c-team__body">
     <% team.people.each do |person| %>
