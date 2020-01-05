@@ -5,8 +5,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.5'
 
+gem 'activeadmin', '~> 2.6'
 gem 'autoprefixer-rails', '~> 7.1', '>= 7.1.6'
 gem 'bootsnap', '~> 1.4.5', require: false
+gem 'devise', '~> 4.7', '>= 4.7.1'
 gem 'pg', '~> 1.1.4'
 gem 'puma', '~> 4.2.1'
 gem 'rails', '~> 6.0.0'

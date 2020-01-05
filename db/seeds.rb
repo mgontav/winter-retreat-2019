@@ -46,3 +46,4 @@ person21 = Person.create!(name: 'Rui Magalhães')
 person22 = Person.create!(name: 'Samuel Moreira')
 person23 = Person.create!(name: 'Tomás Marques', team_id: team4.id)
 
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
