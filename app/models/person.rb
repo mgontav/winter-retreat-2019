@@ -24,7 +24,8 @@ class Person < ApplicationRecord
 
     base_counts = team_counts
     counts_in_use = base_counts.select { |x| x[1] < base_counts[0][1] + 2 }
-    self.team_id = counts_in_use.sample[0]
+    update(team_id: counts_in_use.sample[0])
+    reload
   end
 
   private

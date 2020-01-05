@@ -59,7 +59,7 @@ $team-secondary-color: rgba(getAppColor('text', 'base'),1);
 .c-team__body {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   flex-grow: 1;
   padding: $g-spacing-unit*4 $g-spacing-unit*4 $g-spacing-unit*3;
 }

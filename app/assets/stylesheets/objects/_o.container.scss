@@ -53,3 +53,7 @@ $container-sizes:(
   min-height: 100vh;
 }
 
+.o-container--flex {
+  display: flex;
+  flex-direction: row;
+}

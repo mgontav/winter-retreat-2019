@@ -1,0 +1,22 @@
+$grid-gutter: $g-baseline/2;
+
+.o-list {
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: no-wrap;
+  width: 100%;
+  margin-left: -$grid-gutter;
+  margin-right: -$grid-gutter;
+}
+
+.o-list-el {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  width: 100%;
+  padding: $grid-gutter/2 $grid-gutter;
+  font-size: 2rem;
+  margin: $grid-gutter 0;
+}

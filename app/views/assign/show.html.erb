@@ -1,2 +1,42 @@
-<h1>Assign#show</h1>
-<p>Find me in app/views/assign/show.html.erb</p>
+<div class="o-container o-container--flex">
+  <div class="o-list" id="sentences">
+    <h1 class="o-list-el">Hmm...</h1>
+  </div>
+  <div class="o-assign_image--container">
+    <% if @team.avatar.attached? %>
+      <div class="o-assign_image" id="team-image" style="background-image: url(<%= url_for(@team.avatar) %>);"></div>
+    <% else %>
+      <div class="o-assign_image" id="team-image">
+        <h1><%= @team.name %></h1>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script type="text/javascript">
+  var sentences = <%= raw @sentences %>;
+  var decision = "<%= raw "I pick #{@team.name}!" %>";
+
+  function addLine(content) {
+    var new_el = document.createElement('h1');
+    new_el.classList.add('o-list-el');
+    new_el.innerHTML = content;
+    document.getElementById('sentences').append(new_el);
+  }
+
+  function addSentence(content, time) {
+    setTimeout(function() {
+      addLine(content);
+    }, time);
+  };
+
+  for (var i = 0; i < sentences.length; i++) {
+    addSentence(sentences[i], 2000*(i+1));
+  }
+  addSentence('...', 10000);
+  addSentence(decision, 12000);
+
+  setTimeout(function(){
+    document.getElementById('team-image').classList.add('show');
+  }, 12000);
+</script>
