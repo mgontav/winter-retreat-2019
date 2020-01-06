@@ -1,6 +1,8 @@
 <div class="o-container o-container--flex">
-  <div class="o-list" id="sentences">
-    <h1 class="o-list-el">Hmm...</h1>
+  <div class="o-list">
+    <div class="o-sorting_qat_image" style="background-image: url(<%= image_path('sorting_qat1') %>)"></div>
+    <div class="o-list-el o-list-rolling" id="sentences">
+    </div>
   </div>
   <div class="o-assign_image--container">
     <% if @team.avatar.attached? %>
@@ -14,29 +16,33 @@
 </div>
 
 <script type="text/javascript">
-  var sentences = <%= raw @sentences %>;
-  var decision = "<%= raw "I pick #{@team.name}!" %>";
+  document.addEventListener("DOMContentLoaded", function() {
+    var sentences = <%= raw @sentences %>;
+    var decision = "<%= raw "I pick #{@team.name}!" %>";
 
-  function addLine(content) {
-    var new_el = document.createElement('h1');
-    new_el.classList.add('o-list-el');
-    new_el.innerHTML = content;
-    document.getElementById('sentences').append(new_el);
-  }
+    function changeLine(content) {
+      var new_el = document.createElement('h1');
+      new_el.classList.add('o-list-el');
+      new_el.innerHTML = content;
+      var el = document.getElementById('sentences');
+      el.replaceChild(new_el, el.firstChild);
+    }
 
-  function addSentence(content, time) {
-    setTimeout(function() {
-      addLine(content);
-    }, time);
-  };
+    function addSentence(content, time) {
+      setTimeout(function() {
+        changeLine(content);
+      }, time);
+    };
 
-  for (var i = 0; i < sentences.length; i++) {
-    addSentence(sentences[i], 2000*(i+1));
-  }
-  addSentence('...', 10000);
-  addSentence(decision, 12000);
+    for (var i = 0; i < sentences.length; i++) {
+      addSentence(sentences[i], 2500*(i+1));
+    }
+    addSentence('Hmm...',0);
+    addSentence('...', 12000);
+    addSentence(decision, 14000);
 
-  setTimeout(function(){
-    document.getElementById('team-image').classList.add('show');
-  }, 12000);
+    setTimeout(function(){
+      document.getElementById('team-image').classList.add('show');
+    }, 14000);
+  });
 </script>

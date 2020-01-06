@@ -1,4 +1,4 @@
-$assign-image-size: 400px;
+$assign-image-size: 600px;
 
 .o-assign_image--container {
   height: 100%;
@@ -20,4 +20,12 @@ $assign-image-size: 400px;
   &.show {
     width: $assign-image-size;
   }
+}
+
+.o-sorting_qat_image {
+  height: 500px;
+  width: 500px;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }

@@ -16,6 +16,7 @@ $grid-gutter: $g-baseline/2;
   display: inline-block;
   vertical-align: middle;
   width: 100%;
+  max-width: 800px;
   padding: $grid-gutter/2 $grid-gutter;
   font-size: 2rem;
   margin: $grid-gutter 0;
