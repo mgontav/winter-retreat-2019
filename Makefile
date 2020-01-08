@@ -41,3 +41,6 @@ rubocop:
 
 annotate:
 	docker-compose run --rm web bundle exec annotate
+
+provision:
+	ansible-playbook -i provisioning/inventory -l production --vault-password-file=provisioning/vault.key provisioning/playbook.yml

@@ -1,0 +1,11 @@
+---
+rvm_url: https://get.rvm.io
+rvm_temp_installer_path: /tmp/rvm-installer.sh
+rvm_default_ruby_version: ruby-2.6.5
+rvm_root: /usr/local/rvm
+rvm_gpg_key_server: hkp://keys.gnupg.net
+rvm_gpg_keys:
+  - 409B6B1796C275462A1703113804BB82D39DC0E3
+  - 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+rvm_install_bundler: true
+rvm_bundler_version: 2.0.2

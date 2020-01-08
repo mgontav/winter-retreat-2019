@@ -1,0 +1,41 @@
+---
+app_name: retreat
+users:
+  provisioner:
+    name: provisioner
+    comment: Application user
+    groups: admin,www-data
+    shell: /bin/bash
+    authorized_commands:
+      - "/bin/systemctl start nginx"
+      - "/bin/systemctl restart nginx"
+      - "/bin/systemctl stop nginx"
+      - "/bin/systemctl status nginx"
+      - "/bin/systemctl start puma"
+      - "/bin/systemctl restart puma"
+      - "/bin/systemctl stop puma"
+      - "/bin/systemctl status puma"
+    authorized_keys:
+      - "ssh_keys/pjaneiro.pub"
+services:
+  puma:
+    name: puma
+    description: Rails Puma Webserver
+    user: provisioner
+    working_dir: "/var/www/{{app_name}}/current"
+    executable: "/bin/bash -lc '{{rvm_root}}/gems/{{rvm_default_ruby_version}}/bin/bundle exec puma -b unix:///var/www/{{app_name}}/shared/sockets/puma.sock'"
+    restart: true
+    enabled: true
+nginx_socket_path: "unix:///var/www/{{app_name}}/shared/sockets/puma.sock"
+nginx_root: "/var/www/{{app_name}}/current/public"
+letsencrypt_email: pjaneiro@whitesmith.co
+postgresql_database: "{{app_name}}_production"
+postgresql_user: provisioner
+postgresql_password: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          30353330336537646135623066636362356331323639323165626235613338616466626136303932
+          6138333636343961626338333862613533646535353061380a313338363463643534616564353334
+          35313439393637383331616465303639613832633137366130316235353362623739626138383539
+          6639643732613164360a666361353332393334613739393038613236666333346263376639313638
+          35363264393534303062623361636539313035346463656366363233323339373239
+rails_app_user: provisioner

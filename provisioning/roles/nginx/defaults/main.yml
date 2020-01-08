@@ -1,0 +1,5 @@
+---
+nginx_base_dir: /etc/nginx
+nginx_config_dir: "{{ nginx_base_dir }}/conf.d"
+nginx_user: root
+nginx_use_https: true

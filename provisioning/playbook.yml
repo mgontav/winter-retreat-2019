@@ -1,0 +1,41 @@
+---
+- import_playbook: "includes/setup.yml"
+
+- hosts: all
+  roles:
+    - users
+    - nginx
+    - ruby
+    - rails
+    - postgresql
+    - systemd
+
+- hosts: all
+  tasks:
+    - name: Install necessary packages
+      apt:
+        name: ['nodejs', 'cron', 'build-essential']
+        state: latest
+        update_cache: true
+      become: true
+      become_method: sudo
+
+    - name: Set HOST_NAME
+      lineinfile:
+        path: "{{item}}"
+        line: "export HOST_NAME=https://{{domain_name}}"
+      with_items:
+        - /etc/profile
+        - /etc/environment
+      become: true
+      become_method: sudo
+
+    - name: Set NODE_ENV
+      lineinfile:
+        path: "{{item}}"
+        line: "export NODE_ENV=production"
+      with_items:
+        - /etc/profile
+        - /etc/environment
+      become: true
+      become_method: sudo

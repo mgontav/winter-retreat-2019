@@ -1,0 +1,118 @@
+---
+- name: Install NGINX
+  apt:
+    name: nginx
+    state: latest
+    update_cache: true
+  become: true
+  become_method: sudo
+
+- name: Disable default NGINX server
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+    - "{{ nginx_base_dir }}/sites-enabled/default"
+    - "{{ nginx_base_dir }}/sites-available/default"
+  become: true
+  become_method: sudo
+  notify: validate nginx configuration
+
+- name: Copy NGINX config file
+  template:
+    src: "templates/nginx.conf.j2"
+    dest: "{{ nginx_base_dir }}/sites-available/{{ domain_name }}.conf"
+    owner: "root"
+    group: "root"
+    mode: 0644
+  become: true
+  become_method: sudo
+  notify: validate nginx configuration
+  when: not nginx_use_https
+
+- name: Copy NGINX config file
+  template:
+    src: "templates/nginx_challenges.conf.j2"
+    dest: "{{ nginx_base_dir }}/sites-available/{{ domain_name }}.conf"
+    owner: "root"
+    group: "root"
+    mode: 0644
+  become: true
+  become_method: sudo
+  notify: validate nginx configuration
+  when: nginx_use_https
+
+- name: Install Let's Encrypt
+  apt:
+    name: letsencrypt
+    state: latest
+    update_cache: true
+  become: true
+  become_method: sudo
+  when: nginx_use_https
+
+- name: Create Let's Encrypt directory
+  file:
+    name: /var/www/letsencrypt
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+  become: true
+  become_method: sudo
+  when: nginx_use_https
+
+- name: Link NGINX config files
+  file:
+    src: "{{ nginx_base_dir }}/sites-available/{{ domain_name }}.conf"
+    dest: "{{ nginx_base_dir }}/sites-enabled/{{ domain_name }}.conf"
+    owner: "root"
+    group: "root"
+    mode: 0777
+    state: link
+  become: true
+  become_method: sudo
+  notify: validate nginx configuration
+
+- name: Start NGINX
+  service:
+    name: nginx
+    state: restarted
+  become: true
+  become_method: sudo
+
+- name: Create letsencrypt certificate
+  shell: letsencrypt certonly -n --webroot -w /var/www/letsencrypt -m {{ letsencrypt_email }} --agree-tos -d {{ domain_name }}
+  args:
+    creates: /etc/letsencrypt/live/{{ domain_name }}
+  become: true
+  become_method: sudo
+  when: nginx_use_https
+
+- name: Delete old NGINX config file
+  file:
+    path: "{{ nginx_base_dir }}/sites-available/{{ domain_name }}.conf"
+    state: absent
+  become: true
+  become_method: sudo
+  when: nginx_use_https
+
+- name: Replace NGINX config file
+  template:
+    src: "templates/nginx_https.conf.j2"
+    dest: "{{ nginx_base_dir }}/sites-available/{{ domain_name }}.conf"
+    owner: "root"
+    group: "root"
+    mode: 0644
+  become: true
+  become_method: sudo
+  notify: validate nginx configuration
+  when: nginx_use_https
+
+- name: Restart NGINX
+  service:
+    name: nginx
+    state: restarted
+  become: true
+  become_method: sudo
+  when: nginx_use_https

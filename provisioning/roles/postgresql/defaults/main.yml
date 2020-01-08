@@ -1,0 +1,6 @@
+---
+postgresql_admin_user: postgres
+postgresql_users: []
+postgresql_database: postgres
+postgresql_user: postgres
+postgresql_password: postgres

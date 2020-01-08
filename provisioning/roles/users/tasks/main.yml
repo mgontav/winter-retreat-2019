@@ -1,0 +1,35 @@
+---
+- name: Add application user
+  user:
+    name: "{{ item.value.name }}"
+    comment: "{{ item.value.comment }}"
+    shell: "{{ item.value.shell }}"
+    groups: "{{ item.value.groups }}"
+    append: true
+  with_dict: "{{ users }}"
+  when: users|length > 0
+  become: true
+  become_method: sudo
+
+- name: Assure authorized_keys are set
+  authorized_key:
+    user: "{{ item[0].name }}"
+    key: "{{ lookup('file', item[1]) }}"
+  with_subelements:
+    - "{{ users }}"
+    - authorized_keys
+  when: users|length > 0
+  become: true
+  become_method: sudo
+
+- name: Assure users can use systemctl
+  template:
+    src: "templates/sudoers_file.j2"
+    dest: "/etc/sudoers.d/{{ item.value.name }}"
+    owner: "root"
+    group: "root"
+    mode: 0440
+  with_dict: "{{ users }}"
+  when: users|length > 0
+  become: true
+  become_method: sudo

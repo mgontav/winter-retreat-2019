@@ -1,0 +1,7 @@
+---
+- name: ensure postgresql is running
+  become: true
+  become_method: sudo
+  service:
+    name: postgresql
+    state: started

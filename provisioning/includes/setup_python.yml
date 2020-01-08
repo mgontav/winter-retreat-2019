@@ -1,0 +1,11 @@
+- hosts: all
+  gather_facts: False
+  pre_tasks:
+    - name: Install python
+      raw: test -e /usr/bin/python || (yum -y update && yum install -y python) || (apt -y update && apt install -y python)
+      become: true
+      become_method: sudo
+      register: output
+      changed_when: output.stdout != ""
+    - name: Gathering facts
+      setup: # aka gather_facts

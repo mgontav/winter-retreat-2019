@@ -1,0 +1,79 @@
+---
+- name: Install dependencies
+  become: true
+  become_method: sudo
+  apt:
+    name: ['curl', 'gnupg2']
+    state: latest
+    update_cache: true
+
+- name: Import necessary keys
+  become: true
+  become_method: sudo
+  command: "gpg2 --keyserver {{rvm_gpg_key_server}} --recv-keys {{rvm_gpg_keys | join(' ')}}"
+  changed_when: false
+
+- name: Download RVM installer
+  become: true
+  become_method: sudo
+  get_url:
+    url: "{{rvm_url}}"
+    dest: "{{rvm_temp_installer_path}}"
+    mode: 0755
+  changed_when: false
+
+- name: Install RVM
+  become: true
+  become_method: sudo
+  command: "{{rvm_temp_installer_path}} --path {{rvm_root}} stable"
+  register: rvm_install_output
+  changed_when: "'Upgrading' not in rvm_install_output.stdout"
+
+- name: Remove RVM installer
+  become: true
+  become_method: sudo
+  file:
+    path: "{{rvm_temp_installer_path}}"
+    state: absent
+  changed_when: false
+
+- name: Install Ruby
+  become: true
+  become_method: sudo
+  command: "{{rvm_root}}/bin/rvm install {{rvm_default_ruby_version}}"
+  args:
+    creates: "{{rvm_root}}/rubies/{{rvm_default_ruby_version}}"
+
+- name: Set default Ruby
+  become: true
+  become_method: sudo
+  command: "{{rvm_root}}/bin/rvm alias create default {{rvm_default_ruby_version}}"
+
+- name: Install bundler gem
+  command: "{{rvm_root}}/wrappers/{{rvm_default_ruby_version}}/gem install bundler -v {{rvm_bundler_version}}"
+  become: true
+  become_method: sudo
+  when: rvm_install_bundler
+
+- name: Create global symlinks to Ruby executables
+  file:
+    src: "{{rvm_root}}/wrappers/{{rvm_default_ruby_version}}/{{item}}"
+    dest: "/usr/local/bin/{{item}}"
+    owner: root
+    group: root
+    state: link
+  with_items:
+    - bundle
+    - bundler
+    - erb
+    - executable-hooks-uninstaller
+    - gem
+    - irb
+    - rake
+    - rdoc
+    - ri
+    - ruby
+    - ruby_executable_hooks
+  changed_when: false
+  become: true
+  become_method: sudo

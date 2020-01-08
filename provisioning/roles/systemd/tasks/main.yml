@@ -1,0 +1,21 @@
+---
+- name: Create service files
+  template:
+    src: "templates/systemd_file.j2"
+    dest: "{{ services_base_path }}/{{ item.value.name }}.service"
+    owner: "root"
+    group: "root"
+    mode: 0644
+  with_dict: "{{ services }}"
+  when: services|length > 0
+  become: true
+  become_method: sudo
+
+- name: Enable services
+  systemd:
+    name: "{{ item.value.name }}"
+    enabled: "{{ item.value.enabled }}"
+  with_dict: "{{ services }}"
+  when: services|length > 0
+  become: true
+  become_method: sudo

@@ -1,0 +1,5 @@
+[production]
+retreat.whitesmith.co
+
+[all:vars]
+ansible_user=root

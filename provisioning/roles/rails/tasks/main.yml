@@ -1,0 +1,77 @@
+---
+- name: Copy deploy key to server
+  copy:
+    src: "ssh_keys/deploy_key"
+    dest: "/home/{{rails_app_user}}/.ssh/id_rsa"
+    owner: "{{rails_app_user}}"
+    group: "{{rails_app_user}}"
+    mode: 0400
+  become: true
+  become_method: sudo
+
+- name: Delete default http folder
+  file:
+    path: /var/www/html
+    state: absent
+  become: true
+  become_method: sudo
+
+- name: Create app folder
+  file:
+    path: "/var/www/{{app_name}}"
+    state: directory
+    owner: "{{rails_app_user}}"
+    group: "{{rails_app_user}}"
+    mode: 0755
+  become: true
+  become_method: sudo
+
+- name: Create config folder
+  file:
+    path: "/var/www/{{app_name}}/shared/config"
+    state: directory
+    owner: "{{rails_app_user}}"
+    group: "{{rails_app_user}}"
+    mode: 0755
+  become: true
+  become_method: sudo
+
+- name: Create sockets folder
+  file:
+    path: "/var/www/{{app_name}}/shared/sockets"
+    state: directory
+    owner: "{{rails_app_user}}"
+    group: "{{rails_app_user}}"
+    mode: 0755
+  become: true
+  become_method: sudo
+
+- name: Create storage folder
+  file:
+    path: "/var/www/{{app_name}}/shared/storage"
+    state: directory
+    owner: "{{rails_app_user}}"
+    group: "{{rails_app_user}}"
+    mode: 0755
+  become: true
+  become_method: sudo
+
+- name: Copy master.key
+  copy:
+    src: master.key
+    dest: "/var/www/{{app_name}}/shared/config/master.key"
+    owner: "{{rails_app_user}}"
+    group: "{{rails_app_user}}"
+    mode: 0755
+  become: true
+  become_method: sudo
+
+- name: Set RAILS_ENV
+  lineinfile:
+    path: "{{item}}"
+    line: "export RAILS_ENV=production"
+  with_items:
+    - /etc/profile
+    - /etc/environment
+  become: true
+  become_method: sudo

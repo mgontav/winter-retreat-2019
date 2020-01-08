@@ -19,3 +19,10 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Provisioning stuff
+provisioning/vault.key
+provisioning/playbook.retry
+provisioning/ssh_keys/id_rsa
+provisioning/.vagrant
+provisioning/*.log
