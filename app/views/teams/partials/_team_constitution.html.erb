@@ -1,5 +1,8 @@
-<div class="c-team">
+<div class="c-team" style="background-color: <%= team.color1 %>; color: <%= team.color2 %>; font-weight: bold;">
   <section class="c-team__header">
+    <h3 class="c-team__position">
+      <%= "#{position}#{position.ordinal}" %>
+    </h3>
     <h3 class="c-team__title">
       <%= team.name %>
     </h3>
@@ -9,9 +12,7 @@
   </section>
   <section class="c-team__body">
     <% team.people.each do |person| %>
-      <p class="c-team__info">
-        <span class="c-team__member"><%= person.name %></span>
-      </p>
+      <p class="c-team__member"><%= person.name %></p>
     <% end %>
   </section>
 </div>

@@ -19,7 +19,7 @@ $team-secondary-color: rgba(getAppColor('text', 'base'),1);
   flex-direction: column;
   justify-content: flex-start;
   position: relative;
-  height: 100%;
+  height: auto;
   width: $team-width;
   max-width: 100%;
   margin: auto;
@@ -29,6 +29,7 @@ $team-secondary-color: rgba(getAppColor('text', 'base'),1);
   color: getAppColor('text', 'base');
   @include font-size(14px);
   overflow: hidden;
+  font-weight: bold;
 }
 
 .c-team__header {
@@ -46,6 +47,14 @@ $team-secondary-color: rgba(getAppColor('text', 'base'),1);
   margin-bottom: $g-spacing-unit;
   text-align: center;
   font-size: 1.5rem;
+}
+
+.c-team__position {
+  position: relative;
+  margin-bottom: $g-spacing-unit;
+  text-align: center;
+  font-size: 2rem;
+  text-transform: uppercase;
 }
 
 .c-team__image {
@@ -69,11 +78,20 @@ $team-secondary-color: rgba(getAppColor('text', 'base'),1);
   padding-left: $g-spacing-unit*4.5;
 }
 
+.c-team__info span {
+  text-transform: uppercase;
+}
+
 .c-team__info + .c-team__info{
   margin-top: $g-spacing-unit*2;
 }
 
 .c-team__member {
-  color: getAppColor('text', 'secondary');
+  position: relative;
+  padding-left: $g-spacing-unit*4.5;
   font-size: 1.125rem;
+}
+
+.c-team__member + .c-team__member{
+  margin-top: $g-spacing-unit*2;
 }

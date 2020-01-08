@@ -1,8 +1,15 @@
 <div class="o-container">
   <div class="o-grid">
+    <% @teams.each_with_index do |team, idx| %>
+      <div class="o-grid__el u-size-12/12 u-size-12/12@xs u-size-6/12@md u-size-3/12@xl">
+        <%= render partial: 'teams/partials/team_constitution', locals: {team: team, position: idx+1} %>
+      </div>
+    <% end %>
+  </div>
+  <div class="o-grid">
     <% @teams.each do |team| %>
       <div class="o-grid__el u-size-12/12 u-size-12/12@xs u-size-6/12@md u-size-3/12@xl">
-        <%= render partial: 'teams/partials/team_constitution', locals: {team: team} %>
+        <%= render partial: 'teams/partials/team_details', locals: {team: team} %>
       </div>
     <% end %>
   </div>

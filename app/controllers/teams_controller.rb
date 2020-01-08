@@ -3,6 +3,6 @@
 # Controller used to show team rosters
 class TeamsController < ApplicationController
   def index
-    @teams = Team.includes(:people).order(id: :asc)
+    @teams = Team.includes(:people).order(score: :desc)
   end
 end

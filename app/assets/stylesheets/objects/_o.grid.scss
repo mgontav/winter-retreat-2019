@@ -36,9 +36,11 @@ $grid-breakpoints: ('xs', 'sm', 'sml', 'md', 'mdl', 'lg', 'xl');
   position: relative;
   display: flex;
   flex-wrap: wrap;
+  height: 100%;
   width: auto;
   margin-left: -$grid-gutter;
   margin-right: -$grid-gutter;
+  height: auto;
   //remove if using html comments to remove inline-block whitespace
   font-size: 0px;
 }
@@ -50,6 +52,7 @@ $grid-breakpoints: ('xs', 'sm', 'sml', 'md', 'mdl', 'lg', 'xl');
   display: inline-block;
   vertical-align: top;
   width: 100%;
+  height: 100%;
   padding: $grid-gutter/2 $grid-gutter;
   font-size: 1rem;
 }
