@@ -19,6 +19,9 @@ gem 'sprockets', '~> 3.7.2'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'capistrano', '~> 3.11', require: false
+  gem 'capistrano-rails', '~> 1.4', require: false
+  gem 'capistrano-rvm'
   gem 'i18n-tasks', '~> 0.9.28'
   gem 'rubocop', '~> 0.75.1', require: false
 end

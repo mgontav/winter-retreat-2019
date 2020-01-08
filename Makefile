@@ -44,3 +44,6 @@ annotate:
 
 provision:
 	ansible-playbook -i provisioning/inventory -l production --vault-password-file=provisioning/vault.key provisioning/playbook.yml
+
+deploy:
+	docker-compose run --rm web bundle exec cap production deploy
