@@ -32,7 +32,9 @@ ActiveAdmin.register Team do
       end
       row :founder
       row :values
-      row :score
+      row :score do |team|
+        team.score
+      end
       row :color1
       row :color2
     end

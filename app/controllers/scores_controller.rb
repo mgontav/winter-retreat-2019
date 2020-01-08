@@ -3,6 +3,8 @@
 # Team scores
 class ScoresController < ApplicationController
   def index
-    @teams = Team.all.order(score: :desc)
+    @teams = Team.includes(:challenges).sort_by {
+      |team| team.score
+    }.reverse
   end
 end

@@ -3,6 +3,9 @@
     <% @teams.each do |team| %>
       <div class="o-list-el">
         <h1><%= team.name %>: &nbsp; <%= team.score %> points!</h1>
+        <% team.challenges.each do |challenge| %>
+          <%= render partial: 'scores/partials/challenge_details', locals: {challenge: challenge} %>
+        <% end %>
       </div>
     <% end %>
   </div>

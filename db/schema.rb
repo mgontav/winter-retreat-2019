@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_05_054129) do
+ActiveRecord::Schema.define(version: 2020_01_08_213243) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,15 @@ ActiveRecord::Schema.define(version: 2020_01_05_054129) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "challenges", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.decimal "score", default: "0.0", null: false
+    t.bigint "team_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_challenges_on_name", unique: true
+  end
+
   create_table "people", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.bigint "team_id"
@@ -57,7 +66,6 @@ ActiveRecord::Schema.define(version: 2020_01_05_054129) do
     t.string "color1", default: "", null: false
     t.string "color2", default: "", null: false
     t.string "values", default: [], null: false, array: true
-    t.decimal "score", default: "0.0", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name"], name: "index_teams_on_name", unique: true

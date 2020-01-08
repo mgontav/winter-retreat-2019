@@ -62,3 +62,14 @@ if Sentence.count.zero?
   Sentence.create!(content: 'I\'ll need a good rest after this one...')
   Sentence.create!(content: 'Are we gonna be doing this all day?')
 end
+
+if Challenge.count.zero?
+  Challenge.create!(name: "Riddle #1", score: 5.0)
+  Challenge.create!(name: "Riddle #2", score: 5.0)
+  Challenge.create!(name: "Riddle #3", score: 5.0)
+  Challenge.create!(name: "Riddle #4", score: 5.0)
+  Challenge.create!(name: "Cluedo 1st Place", score: 10.0)
+  Challenge.create!(name: "Cluedo 2nd Place", score: 5.0)
+  Challenge.create!(name: "Cluedo 3rd Place", score: 2.5)
+  Challenge.create!(name: "Cluedo 4th Place", score: 1.25)
+end
